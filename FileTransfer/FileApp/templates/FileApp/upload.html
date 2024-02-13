@@ -1,0 +1,21 @@
+{% extends "FileApp/layout.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+<h3 id="title">Upload File</h3>
+
+<hr>
+
+<div id="upload" class="m-5">
+    <form method="post" id="uploadForm" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {{ form|crispy }}
+
+        <input class="btn btn-secondary" type="submit" name="Upload">
+    </form>
+</div>
+
+{% endblock %}

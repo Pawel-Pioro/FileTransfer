@@ -1,0 +1,31 @@
+{% extends "FileApp/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+<h1 id="welcome">Welcome, {{ user.username }}</h1>
+
+<h3 id="title"></h3>
+
+<hr>
+
+<div id="myFiles" class="container">
+    {% for file in files %}
+        <div class="card row justify-content-between mb-3" >
+        <div class="card-body" >
+            <button id="deleteButton" name="{{file.pk}}" class="float-end btn btn-outline-danger"><i style="font-size: 20px;" class="bi bi-trash-fill"></i></button>
+            <a href="media/{{ file.file}}" style="text-decoration:none;color: black;"><h5 class="card-title ">{{ file.file| cut:'uploads/' }}</h5></a>
+        </div>
+        <div class="card-footer">
+            <p class="text-muted"><small >{{file.uploaded_at}}</small></p>
+        </div>
+        </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'FileApp/index.js' %}"></script>
+{% endblock %}
